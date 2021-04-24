@@ -2,6 +2,7 @@
 /* @import url(mdb/css/bootstrap.rtl.min.css); */
 @import url(mdb/css/mdb.min.css);
 @import url(aos.css);
+@import url(mdb/css/mdb.dark.min.css);
 a{
     text-decoration: none;
 }
@@ -328,4 +329,37 @@ html{
 }
 .text-small{
   font-size: 16px;
+}
+.border-right{
+  border-right: .05em solid rgba(85, 85, 85, 0.295);
+}
+
+.icon{
+  font-size: 25px;
+  background-color: rgba(85, 85, 85, 0.747);
+  color: #fff;
+  border-radius: 50%;
+  padding: 8px;
+}
+.fa-facebook-f{
+  padding-left:12px;
+  padding-right: 12px;
+}
+.fa-linkedin{
+  padding-left:10px;
+  padding-right: 10px;
+}
+/* 
+.toast{
+  transition: all ease-in-out 800ms !important;
+}
+.fade.show{
+  transform: translateX(0px);
+}
+.fade.hide{
+  transform: translateX(350px);
+} */
+
+.alert.straight{
+  border-radius: 0px;
 }

@@ -28,7 +28,7 @@ class Candidate(models.Model):
     department = models.CharField(max_length=100)
     level = models.CharField(max_length=100, choices=LEVELS)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    cover = models.ImageField(upload_to="candidates",null=True, blank=True)
+    cover = models.ImageField(upload_to="candidates")
     def __str__(self):
         return f"{self.get_full_name()} -{self.category}"
     def get_full_name(self):

@@ -64,8 +64,8 @@ def signup(request):
                     messages.error(request, "Your School credentials are invalid or network issues, please try again later", "danger")
                     return render(request,"registration/signup.html", {'form':form})
 
-            else:
-                messages.error(request, form.non_field_errors(), "danger")
+            # else:
+            #     messages.error(request, form.non_field_errors(), "danger")
         return render(request,"registration/signup.html", {'form':form})
     else:
         messages.error(request, "Deadline, bruhh", "danger")
@@ -81,8 +81,8 @@ def login(request):
                 auth_login(request,user)
                 messages.success(request, "Login Successful")
                 return redirect("polls:categories")
-        else:
-            messages.error(request, form.non_field_errors(), "danger")
+        # else:
+        #     messages.error(request, form.non_field_errors(), "danger")
     return render(request,"registration/login.html", {'form':form})
 
 def logout(request):

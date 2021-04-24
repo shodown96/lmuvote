@@ -3,17 +3,31 @@
 {% block title %}Contact{% endblock %}
 {% block body %}
 
-<div class="container pt-5">
-    <div class="row">
-        <div class="col-lg-6">
-            <iframe title="map"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.7792080669196!2d5.08119431464174!3d8.123948294151795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104820481540fac1%3A0xb324dd3eec5f181b!2sLandmark%20University!5e0!3m2!1sen!2sng!4v1608633444863!5m2!1sen!2sng"
-            width="100%" height="650px" frameBorder="0" style="border:0" allowFullScreen="" aria-hidden="false" tabIndex="0">
-            </iframe>
-        </div>
-        <div class="col-lg-6">
-            <h4 class="text-center mt-5">Contact</h4>
-            <form action="{% url 'polls:contact' %}" method="post" class="mx-4 px-4 mb-4">
+<div class="pb-4">
+    <iframe title="map"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.7792080669196!2d5.08119431464174!3d8.123948294151795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104820481540fac1%3A0xb324dd3eec5f181b!2sLandmark%20University!5e0!3m2!1sen!2sng!4v1608633444863!5m2!1sen!2sng"
+    width="100%" height="450px" frameBorder="0" style="border:0" allowFullScreen="" aria-hidden="false" tabIndex="0">
+    </iframe>
+    <div class="card text-center mx-auto w-75 mt-n5 shadow-3-strong">
+       <div class="card-body">
+           <div class="row">
+               <div class="col-md-6 border-right">
+                    <h4 class="card-title">Contact</h4>
+                    <p>shodown96@gmail.com</p>
+                    <p>+234 789 749 3748</p>
+               </div>
+               <div class="col-md-6">
+                <h4 class="card-title">Address</h4>
+                   <p>Landmark University, Omu-Aran.</p>
+                   <p>Kwara, NG.</p>
+               </div>
+           </div>
+       </div>
+    </div>
+        <div class="container">
+            <H4 class="font-weight-bolder text-center mt-5">LEAVE A MESSAGE</H4>
+            <p class="text-center">Drop any comments, complaints or suggestions.</p>
+            <form action="{% url 'polls:contact' %}" method="post" class="mx-auto mb-4 w-75">
                 {% csrf_token %}
                     {% for field in form %}
                         <div class="form-outline">
@@ -25,10 +39,15 @@
                             <label for="" class="form-label">{{field.label_tag}}</label>
                         </div>
                     {% endfor %}
+                    <ul class="list-unstyled d-flex justify-content-between mx-auto w-50">
+                        <li><a href="http://elijahsoladoye.netlify.app" target="_blank" rel="noopener noreferrer"><i class="icon fas fa-link"></i></a></li>
+                        <li><a href="https://web.facebook.com/elijah.soladoye" target="_blank" rel="noopener noreferrer"><i class="icon fab fa-facebook-f"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/elijah-soladoye-2b99b11b5" target="_blank" rel="noopener noreferrer"><i class="icon fab fa-linkedin"></i></a></li>
+                        <li><a href="https://twitter.com/ElijahSoladoye1" target="_blank" rel="noopener noreferrer"><i class="icon fab fa-twitter"></i></a></li>
+                    </ul>
                     <input type="submit" value="Send" class="mt-4 btn btn-primary btn-block mb-4">
             </form>
         </div>
-    </div>
 </div>
 
 
