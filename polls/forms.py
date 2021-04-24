@@ -2,6 +2,7 @@ from django import forms
 from .models import *
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 
 class VoteForm(forms.ModelForm):
     class Meta:
@@ -22,7 +23,8 @@ class SignUpForm(forms.ModelForm):
         username = self.cleaned_data.get('username')
         qs = User.objects.filter(username=username)
         if qs.exists():
-            return self.add_error(None, "User already exists")
+            return messages.error(request, "Deadline, bruhh", "danger")
+            # return self.add_error(None, "User already exists")
             # raise forms.ValidationError("User already exists")
         return username
     def clean_confirm_password(self):
