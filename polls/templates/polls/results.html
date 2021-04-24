@@ -1,0 +1,98 @@
+{% extends 'polls/base.html' %}
+{% load votes %}
+{% block title %}Results{% endblock %}
+{% block body %}
+
+    <div class="container">
+        <h1 class="tet-center mt-5">The Final Results</h1>
+            {% for category in categories %}
+            <h4 class="text-center">{{category}}</h4>
+                <div class="row mb-5">
+                    <div class="col-lg-6 mb-2">
+                        {% for candidate in category.candidate_set.all %}
+                            {% winner winner_candidate=candidate category=category as winner%}
+                                <p class="{% if winner %}text-success{% endif %}">
+                                {{candidate.get_full_name}} - {{candidate.department}} - {{candidate.level}} - 
+                                    {% candidate_votes votes=candidate.vote_set.all category=category %} Votes 
+                                </p>
+
+                        {% endfor %}
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="" style="width:100%; height:100%">
+                            <canvas id="myChart{{forloop.counter}}"></canvas>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+    </div>
+
+{% endblock %}
+
+{% block js %}
+<script>
+var data = {{data|safe}};
+console.log(data)
+const data2 = {
+  labels: ['Red', 'Orange', 'Yellow', 'Green', 'Blue'],
+  datasets: [
+    {
+      label: 'Dataset 1',
+      data: data,
+      backgroundColor: data[0].bgColor,
+    }
+  ]
+};
+const config = {
+  type: 'doughnut',
+  data: data2,
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Chart.js Doughnut Chart'
+      }
+    }
+  },
+};
+
+console.log(data.length)
+for (let i = 0; i < data.length; i++) {
+    console.log(data[i]['category']);
+    console.log(i.toString())
+    var ctx = document.getElementById('myChart'+(i+1).toString()).getContext('2d');
+    var myChart = new Chart(ctx, 
+    {
+    type: 'doughnut',
+    data: {
+            labels: data[i]['labels'],
+            datasets: [{
+                label: '# of Votes',
+                data: data[i]['votes'],
+                backgroundColor: data[i]['bgColor'],
+                borderColor: data[i]['bColor'],
+                borderWidth: 1
+            }]
+        },
+    options: {
+        responsive: true,
+        plugins: {
+        legend: {
+            position: 'top',
+        },
+        title: {
+            display: true,
+            text: 'Chart.js Doughnut Chart'
+        }
+        }
+    },
+    });
+    
+}
+
+</script>
+{% endblock js %}

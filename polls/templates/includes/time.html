@@ -1,0 +1,49 @@
+{% load votes %}
+{% deadline  as deadline%}
+<!-- time countdown -->
+<!-- <div class="uk-grid-small uk-child-width-auto uk-flex-center" uk-grid uk-countdown="date: {% deadline_isoformat %}+00:00">
+    <div>
+        <div class="uk-countdown-number uk-countdown-days"></div>
+    </div>
+    <div class="uk-countdown-separator">:</div>
+    <div>
+        <div class="uk-countdown-number uk-countdown-hours"></div>
+    </div>
+    <div class="uk-countdown-separator">:</div>
+    <div>
+        <div class="uk-countdown-number uk-countdown-minutes"></div>
+    </div>
+    <div class="uk-countdown-separator">:</div>
+    <div>
+        <div class="uk-countdown-number uk-countdown-seconds"></div>
+    </div>
+</div> -->
+
+<!-- <div id="clockdiv" class=" d-flex text-center justify-content-center align-items-center">
+    <div class="d-flex justify-content-center flex-column">
+        <h1 class="days"></h1>
+        <span>DAYS</span>
+    </div>
+    <h2>:</h2>
+    <div class="d-flex justify-content-center flex-column">
+        <h1 class="hours"></h1>
+        <span>HOURS</span>
+    </div>
+    <h2>:</h2>
+    <div class="d-flex justify-content-center flex-column">
+        <h1 class="minutes"></h1>
+        <span>MINS</span>
+    </div>
+    <h2>:</h2>
+    <div class="d-flex justify-content-center flex-column">
+        <h1 class="seconds"></h1>
+        <span>SECS</span>
+    </div>
+</div> -->
+<i class="fas fa-bars"></i>
+<div id="clockdiv" class="d-flex justify-content-center align-items-center">
+    <span class="days">00</span><span> : </span>
+    <span class="hours">00</span><span> : </span>
+    <span class="minutes">00</span><span> : </span>
+    <span class="seconds">00</span>
+</div>

@@ -1,0 +1,102 @@
+{% extends 'polls/base.html' %}
+{% load static %}
+{% load votes %}
+{% block title %}{% for category in categories %}{{category.name}}{% endfor %}{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    {% for category in categories %}
+        <h1 class="text-center mt-4">{{category.name}}</h1>
+        <div class="row w-100">
+            {% for candidate in category.candidate_set.all %}
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-right" data-aos-delay="{{forloop.counter|increment}}00">
+                <div class="card shadow-2-strong">
+                  <div class="bg-image hover-overlay ripple hover-zoom hover_shadow" data-mdb-ripple-color="light">
+                    <img class="card-img-top" src="{{candidate.cover.url}}" alt="Card image cap" class="img-fluid">
+                    <a href="#!">
+                      <!-- d-flex justify-content-center align-items-center h-100 -->
+                      <div class="mask p-3 text-light" style="background-color: rgba(0, 0, 0, 0.5)">
+                        <h3>{{candidate.get_full_name}}</h3>
+                        <h4>{{candidate.department}}</h4>
+                        <h5>{{candidate.level}}</h5>
+                      </div>
+                    </a>
+                  </div>
+                
+                <div class="card-body">
+                    <!-- <h4 class="card-title">{{candidate.get_full_name}}</h4> -->
+
+                    <form action="{% url 'polls:vote' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="candidate" value="{{candidate.id}}">
+                            <input type="hidden" name="category" value="{{category.id}}">
+                            {% if not categories.has_next %}
+                            <input type="hidden" name="last" value="true">
+                            {% endif %}
+                            <input type="hidden" name="page" value="{{ categories.number }} ">
+                            <input type="submit" value="Vote {% if today >= deadline %} ({{candidate.get_votes.count}}){%endif%}" class="btn btn-primary btn-block" {% if today >= deadline %}disabled{% endif %}>
+                        </form>
+                </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+
+    <nav aria-label="Page navigation" class="d-flex justify-content-center">
+      <ul class="pagination list-unstyled">
+        {% if categories.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ categories.previous_page_number }}" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        {% endif %}
+        <li class="page-item active"><a class="page-link" href="#">{{ categories.number }}</a></li>
+        {% if categories.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ categories.next_page_number }}" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+        {% endif %}
+      </ul>
+    </nav>
+
+</div>
+
+{% endblock %}
+{% block js %}
+{% endblock js %}
+<!-- <div class="pagination">
+    <span class="step-links">
+        {% if categories.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ categories.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page  of {{ categories.paginator.num_pages }}.
+        </span>
+
+        {% if categories.has_next %}
+            <a href="?page={{ categories.next_page_number }}">next</a>
+            <a href="?page={{ categories.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div> -->
+        <!-- <p>{{candidate.get_full_name}} - {{candidate.department}} - {{candidate.level}} - 
+        <form action="{% url 'polls:vote' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="candidate" value="{{candidate.id}}">
+            <input type="hidden" name="category" value="{{category.id}}">
+            {% if not categories.has_next %}
+            <input type="hidden" name="last" value="true">
+            {% endif %}
+            <input type="hidden" name="page" value="{{ categories.number }} ">
+            <input type="submit" value="Vote">
+        </form> -->
+        

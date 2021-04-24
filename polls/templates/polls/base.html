@@ -1,0 +1,103 @@
+{% load static %}
+{% load votes %}
+{% ccategories as cc %}
+{% today as tt %}
+{% deadline as dd %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+       <meta http-equiv="x-ua-compatible" content="ie=edge">
+       <title>{% block title %}{% endblock %}</title>
+       <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+   </head>
+   <body>
+       <!-- Start your project here-->
+           <!--Navbar-->
+           <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="/">VoteApp</a>
+              <button class="navbar-toggler collapsed" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="navbar-collapse collapse" id="navbarColor02">
+                <ul class="navbar-nav me-auto ml-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'polls:categories' %}">Categories</a>
+                  </li>
+                  <!-- Icon dropdown -->
+                  <!-- <li class="nav-item me-3 me-lg-0 dropdown">
+                    <a class="nav-link dropdown-toggle dropdown-right" href="#" id="navbarDropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                      Categories
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown" data-popper-placement="null" data-mdb-popper="none">
+                        {% for category in cc %}
+                            <li><a class="dropdown-item" href="{% url 'polls:category' %}?page={{forloop.counter}}">{{category.name}}</a></li>
+                        {% endfor %}
+                    </ul>
+                  </li> -->
+                </ul>
+
+                <ul class="navbar-nav d-flex flex-row">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'polls:contact' %}">Contact</a>
+                    </li>
+
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'vauth:logout' %}">Logout</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'vauth:login' %}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'vauth:signup' %}">Signup</a>
+                        </li>
+                    {% endif %}
+                </ul>
+              </div>
+            </div>
+          </nav>
+          <!-- Navbar -->
+
+           {% for message in messages %}
+           <div class="alert alert-{{message.tags}} fade show d-flex justify-content-between" role="alert">
+               <div>{{message}}</div>
+               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <!-- <div class="my-toast shadow-1-strong z-depth-4 toast fade show bg-{{message.tags}} text-white" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header bg-{{message.tags}} text-white">
+                <i class="fas fa-exclamation-triangle fa-lg me-2"></i>
+                <strong class="me-auto">Notification</strong>
+                <button type="button" class="btn-close btn-close-white" data-mdb-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">{{message}}</div>
+            </div> -->
+           {% endfor %}
+           {% block body %}{% endblock %}
+       <!-- End your project here-->
+       <!-- jQuery -->
+        <!-- <script src="{% static 'polls/js/jquery-3.5.1.js' %}"></script> -->
+        <script src="{% static 'polls/mdb/js/mdb.min.js' %}"></script>
+        <script src="{% static 'polls/mdb/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'polls/js/chart.js' %}"></script>
+        <script src="{% static 'polls/js/aos.js' %}"></script>
+        <script src="{% static 'polls/js/countdown.js' %}"></script>
+        <!--  $(".alert.show").delay(5000).slideUp("slow") -->
+        <script>
+            AOS.init();
+          </script>
+
+          {% if tt <= dd %}
+            <script>
+                const deadline = new Date("{% deadline_isoformat %}+00:00");
+                initializeClock('clockdiv', deadline);
+            </script>
+          {% endif %}
+
+        {% block js %}
+        {% endblock js %}
+   </body>
+</html>

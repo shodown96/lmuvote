@@ -1,0 +1,32 @@
+{% extends 'polls/base.html' %}
+{% load widget_tweaks %}
+{% block title %}Signup{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h4 class="text-center mt-5">Signup</h4>
+    <form action="{% url 'vauth:signup' %}" method="post" class="mx-4 px-4 mb-4">
+        {% csrf_token %}
+        {% if form.errors %}
+        <div class="alert alert-danger d-flex justify-content-between" role="alert">
+          {% for key, value in form.errors.items %}
+          {{value}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          {% endfor %}
+        </div>
+        {% endif %}
+            {% for field in form %}
+                <div class="form-outline">
+                    {% if field == form.content %}
+                    {{field|add_class:"form-control mb-4"|attr:"rows:5"}}
+                    {% else %}
+                    {{field|add_class:"form-control mb-4"}}
+                    {% endif %}
+                    <label for="" class="form-label">{{field.label_tag}}</label>
+                </div>
+            {% endfor %}
+            <p>Already Registered? <a class="uk-link-text uk-text-primary" href="{% url 'vauth:login' %}">Login</a></p>
+            <input type="submit" value="Signup" class="mt-4 btn btn-primary btn-block mb-4">
+    </form>
+</div>
+{% endblock %}

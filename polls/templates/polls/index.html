@@ -1,0 +1,28 @@
+{% extends 'polls/base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<div class="container text-center pt-5">
+
+    <h1 class="my-4 text-large">Welcome to the Polls App</h1>
+    {% if today >= deadline %}
+        <div class="text-danger" style="animation-delay: 700ms;">
+            {% include 'includes/time.html' %}
+            <h4 class="text-danger">Time's Up</h4>
+        </div>
+        <h4>Results are out you should see</h4>
+        <a class="btn btn-clear btn-outline-primary" href="{% url 'polls:results' %}">Results</a>
+        
+
+    {% else %}
+
+        <div class="text-success">
+            {% include 'includes/time.html' %}
+        </div>
+        <h4 class="text-medium">Wanna Vote?</h4>
+        <a class="btn btn-clear btn-outline-primary text-small" href="{% url 'polls:categories' %}">Lets get started!</a>
+
+    {% endif %}
+
+</div>
+{% endblock %}

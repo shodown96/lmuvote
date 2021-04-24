@@ -1,0 +1,10 @@
+django
+gunicorn
+django-heroku
+django-cleanup
+django-debug-toolbar
+django-storages
+boto3
+requests
+Pillow
+django-widget-tweaks

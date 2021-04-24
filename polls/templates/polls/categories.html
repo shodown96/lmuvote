@@ -1,0 +1,25 @@
+{% extends 'polls/base.html' %}
+{% load votes %}
+{% block title %}Categories{% endblock %}
+{% block body %}
+    <div class="container text-center pt-5">
+
+        <h1 class="">So you wanna vote that bad?</h1>
+        
+        {% if not categories %}
+            <h4>Coming Soon</h4>
+        {% endif %}
+
+        <div class="justify-content-evenly d-flex flex-wrap">
+            {% for category in categories %}
+                <div class="card category shadow-3 bg-primary" data-aos="fade-right" data-aos-delay="{{forloop.counter|increment}}00">
+                    <div class="card-body">
+                       <h4 class="card-title">
+                           <a class="text-light" href="{% url 'polls:category' %}?page={{forloop.counter}}">{{category}}</a>
+                        </h4>
+                   </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
