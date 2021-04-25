@@ -121,8 +121,7 @@ def contact(request):
                 'New Contact form email',
                 content,
                 WEBSITE_EMAIL,
-                [RECIEVER_EMAIL,],
-                headers={'Message-ID': make_msgid(), 'Reply to':context['email']},
+                [RECIEVER_EMAIL,]
             )
             email.send()
             messages.success(request, "Message sent")
