@@ -12,6 +12,17 @@
        <title>{% block title %}{% endblock %}</title>
        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
        <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+
+       <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-0YJNHNLFG5"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-0YJNHNLFG5');
+      </script>
+
    </head>
    <body>
        <!-- Start your project here-->
@@ -99,6 +110,12 @@
                 initializeClock('clockdiv', deadline);
             </script>
           {% endif %}
+
+          {%comment%}
+            {% if settings.GOOGLE_ANALYTICS_KEY %}
+            <script>{{settings.GOOGLE_ANALYTICS_KEY}}</script>
+            {% endif %}
+          {%endcomment%}
 
         {% block js %}
         {% endblock js %}
