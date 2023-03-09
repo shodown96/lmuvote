@@ -8,3 +8,4 @@ boto3
 requests
 Pillow
 django-widget-tweaks
+django-jet

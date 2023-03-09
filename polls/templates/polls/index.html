@@ -4,9 +4,9 @@
 {% block body %}
 <div class="container text-center pt-5">
 
-    <h1 class="my-4 text-large">Welcome to the Polls App</h1>
+    <h1 class="my-4 text-large" data-aos="fade-in">Welcome to the Polls App</h1>
     {% if today >= deadline %}
-        <div class="text-danger" style="animation-delay: 700ms;">
+        <div class="text-danger" style="animation-delay: 2000ms;" data-aos="fade-in">
             {% include 'includes/time.html' %}
             <h4 class="text-danger">Time's Up</h4>
         </div>
@@ -16,7 +16,7 @@
 
     {% else %}
 
-        <div class="text-success">
+        <div class="text-success" data-aos="fade-in" style="animation-delay: 2000ms;">
             {% include 'includes/time.html' %}
         </div>
         <h4 class="text-medium">Wanna Vote?</h4>
