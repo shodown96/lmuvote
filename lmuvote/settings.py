@@ -178,13 +178,13 @@ EMAIL_USE_TLS = True
 WEBSITE_EMAIL = os.environ.get("WEBSITE_EMAIL")
 RECIEVER_EMAIL = os.environ.get("RECIEVER_EMAIL")
 
-CSRF_COOKIE_SECURE = True #to avoid transmitting the CSRF cookie over HTTP accidentally.
-SESSION_COOKIE_SECURE = True #to avoid transmitting the session cookie over HTTP accidentally.
-SECURE_SSL_REDIRECT = True
-SECURE_HSTS_SECONDS = 31536000  # 1 year
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
-SECURE_REFERRER_POLICY = "origin"
+# CSRF_COOKIE_SECURE = True #to avoid transmitting the CSRF cookie over HTTP accidentally.
+# SESSION_COOKIE_SECURE = True #to avoid transmitting the session cookie over HTTP accidentally.
+# SECURE_SSL_REDIRECT = True
+# SECURE_HSTS_SECONDS = 31536000  # 1 year
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# SECURE_HSTS_PRELOAD = True
+# SECURE_REFERRER_POLICY = "origin"
 
 # SESSION_COOKIE_SAMESITE = None
 # CSRF_COOKIE_SAMESITE = None
