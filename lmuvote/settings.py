@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', False)
 
-ALLOWED_HOSTS = ["lmuvote2-dev2.us-west-2.elasticbeanstalk.com"]
+ALLOWED_HOSTS = ["lmuvote3-dev.us-west-2.elasticbeanstalk.com"]
 
 
 # Application definition
