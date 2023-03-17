@@ -9,4 +9,3 @@ requests
 Pillow
 django-widget-tweaks
 django-jet
-psycopg2
