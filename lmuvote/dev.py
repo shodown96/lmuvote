@@ -34,6 +34,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "vauth",
+    'jet.dashboard',
+    'jet',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -44,6 +46,12 @@ INSTALLED_APPS = [
     "widget_tweaks",
     'django_cleanup.apps.CleanupConfig',
 ]
+
+JET_DEFAULT_THEME = 'light-violet'
+GOOGLE_ANALYTICS_KEY = False
+JET_INDEX_DASHBOARD = 'dashboard.CustomIndexDashboard'
+JET_MODULE_GOOGLE_ANALYTICS_CLIENT_SECRETS_FILE = os.path.join(BASE_DIR, 'client_secret.json')
+print(JET_MODULE_GOOGLE_ANALYTICS_CLIENT_SECRETS_FILE)
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

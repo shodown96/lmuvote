@@ -45,6 +45,27 @@ def category(request):
     }
     return render(request,"polls/category.html", context)
 
+# def detail(request, slug):
+#     context = {}
+#     category = get_object_or_404(Category, slug=slug)
+#     category_list = Category.objects.order_by('id')
+#     p = Paginator(category_list, 1)
+#     for i in p.page_range:
+#         if category in p.page(i).object_list:
+#             page = p.page(i)
+#             if page.has_next():
+#                 next_slug = p.page(i+1).object_list[0].slug
+#                 context["next_slug"] = next_slug
+#             if page.has_previous():
+#                 prev_slug = p.page(i-1).object_list[0].slug
+#                 context["prev_slug"] = prev_slug
+#             break
+#     context.update({
+#         "category": category,
+#         "page": page,
+#     })
+#     return render(request, 'core/detail.html', context)
+
 @login_required
 def vote(request):
     if TODAY<DEADLINE:

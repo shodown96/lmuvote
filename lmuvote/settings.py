@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', False)
 
-ALLOWED_HOSTS = [os.environ.get('DOMAIN')]
+ALLOWED_HOSTS = ["lmuvote2-dev2.us-west-2.elasticbeanstalk.com"]
 
 
 # Application definition
@@ -216,10 +216,6 @@ LOGGING = {
         },
     },
     'filters': {
-        'special': {
-            '()': 'project.logging.SpecialFilter',
-            'foo': 'bar',
-        },
         'require_debug_true': {
             '()': 'django.utils.log.RequireDebugTrue',
         },
@@ -231,36 +227,21 @@ LOGGING = {
             'class': 'logging.StreamHandler',
             'formatter': 'simple'
         },
-        'mail_admins': {
-            'level': 'ERROR',
-            'class': 'django.utils.log.AdminEmailHandler',
-            'filters': ['special']
-        }
     },
     'loggers': {
         'django': {
             'handlers': ['console'],
             'propagate': True,
             'level': 'DEBUG',
-        },
-        'django.request': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
-            'propagate': False,
-        },
-        'myproject.custom': {
-            'handlers': ['console', 'mail_admins'],
-            'level': 'DEBUG',
-            'filters': ['special']
         }
     }
 }
 
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
-YEAR = int(os.environ.get('YEAR', 2025))
-MONTH = int(os.environ.get('MONTH'), 12)
-DAY = int(os.environ.get('DAY', 12))
+YEAR = int(os.environ.get('YEAR', "2025"))
+MONTH = int(os.environ.get('MONTH', "12"))
+DAY = int(os.environ.get('DAY', "12"))
 
 import datetime
 DEADLINE = datetime.datetime(YEAR, MONTH, DAY, 20, 0)

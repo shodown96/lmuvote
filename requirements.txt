@@ -7,5 +7,4 @@ boto3
 requests
 Pillow
 django-widget-tweaks
-django-jet
 psycopg2-binary==2.8.5
