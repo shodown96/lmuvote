@@ -258,9 +258,9 @@ LOGGING = {
 
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
-YEAR = int(os.environ.get('YEAR'))
-MONTH = int(os.environ.get('MONTH'))
-DAY = int(os.environ.get('DAY'))
+YEAR = int(os.environ.get('YEAR', 2025))
+MONTH = int(os.environ.get('MONTH'), 12)
+DAY = int(os.environ.get('DAY', 12))
 
 import datetime
 DEADLINE = datetime.datetime(YEAR, MONTH, DAY, 20, 0)
