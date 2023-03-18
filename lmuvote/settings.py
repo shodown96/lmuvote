@@ -108,6 +108,7 @@ WSGI_APPLICATION = "lmuvote.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
+print('RDS_DB_NAME', os.environ.get('RDS_DB_NAME'))
 if 'RDS_DB_NAME' in os.environ:
     DATABASES = {
         'default': {
