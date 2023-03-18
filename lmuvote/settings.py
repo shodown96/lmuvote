@@ -248,3 +248,4 @@ DEADLINE = datetime.datetime(YEAR, MONTH, DAY, 20, 0)
 
 # import django_heroku
 # django_heroku.settings(locals())
+DEFAULT_AUTO_FIELD='django.db.models.AutoField'
