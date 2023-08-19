@@ -43,3 +43,10 @@ or
 For more information about using Python on Heroku, see these Dev Center articles:
 
 - [Python on Heroku](https://devcenter.heroku.com/categories/python)
+
+You can use this to migrate data
+
+```
+python manage.py dumpdata > r.json
+python manage.py loaddata r.json
+```
